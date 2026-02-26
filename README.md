@@ -4,10 +4,6 @@
 ### CI (lint + tests)
 [![CI](https://github.com/CostaLacoste/frontend-project-46/actions/workflows/ci.yml/badge.svg)](https://github.com/CostaLacoste/frontend-project-46/actions/workflows/ci.yml)
 
-### Sonacube
-<!-- Бейдж заработает после первого успешного анализа в SonarCloud. Project Key возьмите в SonarCloud: Project → Information -->
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=CostaLacoste_frontend-project-46)
-
 ### Asciinema
 
 Пример работы пакета:
