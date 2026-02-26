@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
-import path from 'path';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import yaml from 'js-yaml';
 
 const getFilePath = (filepath) => path.resolve(process.cwd(), filepath);
