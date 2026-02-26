@@ -69,4 +69,26 @@ describe('genDiff', () => {
 
     expect(result).toBe(expected);
   });
+
+  test('plain format: compares nested files and returns plain diff', () => {
+    const filepath1 = getFixturePath('nested1.json');
+    const filepath2 = getFixturePath('nested2.json');
+    const expectedPath = getFixturePath('expected-plain.txt');
+
+    const result = genDiff(filepath1, filepath2, 'plain');
+    const expected = readFileSync(expectedPath, 'utf-8').trim();
+
+    expect(result).toBe(expected);
+  });
+
+  test('plain format: uses [complex value] for nested objects', () => {
+    const filepath1 = getFixturePath('nested1.json');
+    const filepath2 = getFixturePath('nested2.json');
+
+    const result = genDiff(filepath1, filepath2, 'plain');
+
+    expect(result).toContain('[complex value]');
+    expect(result).toContain("was added with value: [complex value]");
+    expect(result).toContain("From [complex value] to 'str'");
+  });
 });
