@@ -36,4 +36,26 @@ describe('genDiff', () => {
     expect(result).toContain('host: hexlet.io');
     expect(result).not.toMatch(/\s[-+]\s/);
   });
+
+  test('compares two flat YAML files and returns stylish diff', () => {
+    const filepath1 = getFixturePath('file1.yml');
+    const filepath2 = getFixturePath('file2.yml');
+    const expectedPath = getFixturePath('expected-stylish.txt');
+
+    const result = genDiff(filepath1, filepath2);
+    const expected = readFileSync(expectedPath, 'utf-8').trim();
+
+    expect(result).toBe(expected);
+  });
+
+  test('YAML and JSON with same data produce same diff', () => {
+    const json1 = getFixturePath('file1.json');
+    const yaml2 = getFixturePath('file2.yml');
+    const expectedPath = getFixturePath('expected-stylish.txt');
+
+    const result = genDiff(json1, yaml2);
+    const expected = readFileSync(expectedPath, 'utf-8').trim();
+
+    expect(result).toBe(expected);
+  });
 });
