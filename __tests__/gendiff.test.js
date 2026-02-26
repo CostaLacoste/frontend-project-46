@@ -91,4 +91,41 @@ describe('genDiff', () => {
     expect(result).toContain("was added with value: [complex value]");
     expect(result).toContain("From [complex value] to 'str'");
   });
+
+  test('json format: returns valid JSON array of changes', () => {
+    const filepath1 = getFixturePath('nested1.json');
+    const filepath2 = getFixturePath('nested2.json');
+
+    const result = genDiff(filepath1, filepath2, 'json');
+
+    expect(() => JSON.parse(result)).not.toThrow();
+    const parsed = JSON.parse(result);
+    expect(Array.isArray(parsed)).toBe(true);
+    expect(parsed.length).toBeGreaterThan(0);
+    parsed.forEach((node) => {
+      expect(node).toHaveProperty('type');
+      expect(node).toHaveProperty('key');
+      expect(['added', 'removed', 'updated']).toContain(node.type);
+    });
+  });
+
+  test('json format: contains expected change types and keys', () => {
+    const filepath1 = getFixturePath('nested1.json');
+    const filepath2 = getFixturePath('nested2.json');
+
+    const result = genDiff(filepath1, filepath2, 'json');
+    const parsed = JSON.parse(result);
+
+    const added = parsed.find((n) => n.type === 'added' && n.key === 'common.follow');
+    expect(added).toBeDefined();
+    expect(added.value).toBe(false);
+
+    const removed = parsed.find((n) => n.type === 'removed' && n.key === 'group2');
+    expect(removed).toBeDefined();
+
+    const updated = parsed.find((n) => n.type === 'updated' && n.key === 'common.setting3');
+    expect(updated).toBeDefined();
+    expect(updated.oldValue).toBe(true);
+    expect(updated.newValue).toBe(null);
+  });
 });
