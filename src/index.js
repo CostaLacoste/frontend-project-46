@@ -7,7 +7,7 @@ const formatValue = (value) => {
   return String(value);
 };
 
-const genDiff = (filepath1, filepath2, format) => {
+const genDiff = (filepath1, filepath2, _format) => {
   const data1 = parseFile(filepath1);
   const data2 = parseFile(filepath2);
 
@@ -40,11 +40,7 @@ const genDiff = (filepath1, filepath2, format) => {
     return `  + ${key}: ${formatValue(data2[key])}`;
   });
 
-  const result = ['{', ...lines, '}'].join('\n');
-
-  void format;
-
-  return result;
+  return ['{', ...lines, '}'].join('\n');
 };
 
 export default genDiff;

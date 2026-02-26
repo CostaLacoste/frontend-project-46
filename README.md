@@ -5,4 +5,4 @@
 
 Пример работы пакета:
 
-[![asciicast](https://asciinema.org/a/your-asciinema-id.svg)](https://asciinema.org/a/your-asciinema-id)
+[![asciicast](https://asciinema.org/a/vmzv6KzAISsDlYf7.svg)](https://asciinema.org/a/vmzv6KzAISsDlYf7)

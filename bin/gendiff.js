@@ -18,7 +18,7 @@ program
   .action((filepath1, filepath2, options) => {
     const diff = genDiff(filepath1, filepath2, options.format);
     if (diff !== undefined) {
-      console.log(diff);
+      process.stdout.write(`${diff}\n`);
     }
   });
 

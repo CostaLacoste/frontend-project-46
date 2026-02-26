@@ -22,5 +22,8 @@
   "homepage": "https://github.com/CostaLacoste/frontend-project-46#readme",
   "dependencies": {
     "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.0.2"
   }
 }
