@@ -21,12 +21,11 @@ const formatValue = (value, depth) => {
 };
 
 const formatStylish = (data1, data2) => {
-  const iter = (obj1, obj2, depth) => {
+  const iter = (obj1, obj2, depth = 1) => {
     const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort();
 
     const currentIndent = ' '.repeat(depth * INDENT_STEP);
-    const signIndent = ' '.repeat(depth * INDENT_STEP - 2 + 2); 
-    // Фактически: depth * 4
+    const signIndent = ' '.repeat(depth * INDENT_STEP - 2);
 
     const lines = keys.flatMap((key) => {
       const has1 = Object.hasOwn(obj1, key);
