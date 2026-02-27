@@ -25,7 +25,6 @@ const formatStylish = (data1, data2) => {
     const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort();
 
     const indent = ' '.repeat(depth * INDENT_STEP - 2);
-    const bracketIndent = ' '.repeat((depth - 1) * INDENT_STEP);
 
     const lines = keys.flatMap((key) => {
       const has1 = Object.prototype.hasOwnProperty.call(obj1, key);
@@ -42,9 +41,9 @@ const formatStylish = (data1, data2) => {
       if (isObject(obj1[key]) && isObject(obj2[key])) {
         const nested = iter(obj1[key], obj2[key], depth + 1);
         return [
-          `${' '.repeat(depth * INDENT_STEP)}${key}: {`,
+          `${' '.repeat(depth * INDENT_STEP - 2)}  ${key}: {`,
           ...nested,
-          `${' '.repeat(depth * INDENT_STEP)}}`,
+          `${' '.repeat(depth * INDENT_STEP - 2)}  }`,
         ];
       }
 
