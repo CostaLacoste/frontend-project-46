@@ -16,12 +16,15 @@ const buildChanges = (data1, data2, pathPrefix = '') => {
     if (has1 && has2) {
       if (obj1 && obj2) {
         changes.push(...buildChanges(val1, val2, path))
-      } else if (val1 !== val2 || obj1 || obj2) {
+      }
+      else if (val1 !== val2 || obj1 || obj2) {
         changes.push({ type: 'updated', key: path, oldValue: val1, newValue: val2 })
       }
-    } else if (has1) {
+    }
+    else if (has1) {
       changes.push({ type: 'removed', key: path })
-    } else {
+    }
+    else {
       changes.push({ type: 'added', key: path, value: val2 })
     }
   }

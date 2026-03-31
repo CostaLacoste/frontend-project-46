@@ -11,4 +11,3 @@ const genDiff = (filepath1, filepath2, format = defaultFormat) => {
 }
 
 export default genDiff
-

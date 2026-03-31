@@ -1,6 +1,6 @@
 const INDENT_STEP = 4
 
-const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value)
+const isObject = value => value !== null && typeof value === 'object' && !Array.isArray(value)
 
 const stringify = (value, depth) => {
   if (!isObject(value)) {
@@ -24,7 +24,7 @@ const formatDiff = (firstData, secondData, depth) => {
   const signIndent = ' '.repeat(depth * INDENT_STEP - 2)
   const keys = Array.from(new Set([...Object.keys(firstData), ...Object.keys(secondData)])).sort()
 
-  const lines = keys.flatMap(key => {
+  const lines = keys.flatMap((key) => {
     const hasFirst = Object.prototype.hasOwnProperty.call(firstData, key)
     const hasSecond = Object.prototype.hasOwnProperty.call(secondData, key)
 
