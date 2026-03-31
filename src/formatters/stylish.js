@@ -14,7 +14,7 @@ const stringify = (value, depth) => {
   const bracketIndent = ' '.repeat((depth - 1) * INDENT_STEP)
   const lines = Object.keys(value)
     .sort()
-    .map((key) => `${indent}${key}: ${stringify(value[key], depth + 1)}`)
+    .map(key => `${indent}${key}: ${stringify(value[key], depth + 1)}`)
 
   return ['{', ...lines, `${bracketIndent}}`].join('\n')
 }
@@ -24,7 +24,7 @@ const formatDiff = (firstData, secondData, depth) => {
   const signIndent = ' '.repeat(depth * INDENT_STEP - 2)
   const keys = Array.from(new Set([...Object.keys(firstData), ...Object.keys(secondData)])).sort()
 
-  const lines = keys.flatMap((key) => {
+  const lines = keys.flatMap(key => {
     const hasFirst = Object.prototype.hasOwnProperty.call(firstData, key)
     const hasSecond = Object.prototype.hasOwnProperty.call(secondData, key)
 
